@@ -16,9 +16,15 @@ import { Route as DeferredImport } from './routes/deferred'
 import { Route as PathlessLayoutImport } from './routes/_pathlessLayout'
 import { Route as UsersRouteImport } from './routes/users.route'
 import { Route as PostsRouteImport } from './routes/posts.route'
+import { Route as Example3RouteImport } from './routes/example3.route'
+import { Route as Example2RouteImport } from './routes/example2.route'
+import { Route as Example1RouteImport } from './routes/example1.route'
 import { Route as IndexImport } from './routes/index'
 import { Route as UsersIndexImport } from './routes/users.index'
 import { Route as PostsIndexImport } from './routes/posts.index'
+import { Route as Example3IndexImport } from './routes/example3.index'
+import { Route as Example2IndexImport } from './routes/example2.index'
+import { Route as Example1IndexImport } from './routes/example1.index'
 import { Route as UsersUserIdImport } from './routes/users.$userId'
 import { Route as PostsPostIdImport } from './routes/posts.$postId'
 import { Route as PathlessLayoutNestedLayoutImport } from './routes/_pathlessLayout/_nested-layout'
@@ -57,6 +63,24 @@ const PostsRouteRoute = PostsRouteImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const Example3RouteRoute = Example3RouteImport.update({
+  id: '/example3',
+  path: '/example3',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const Example2RouteRoute = Example2RouteImport.update({
+  id: '/example2',
+  path: '/example2',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const Example1RouteRoute = Example1RouteImport.update({
+  id: '/example1',
+  path: '/example1',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
@@ -73,6 +97,24 @@ const PostsIndexRoute = PostsIndexImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => PostsRouteRoute,
+} as any)
+
+const Example3IndexRoute = Example3IndexImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => Example3RouteRoute,
+} as any)
+
+const Example2IndexRoute = Example2IndexImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => Example2RouteRoute,
+} as any)
+
+const Example1IndexRoute = Example1IndexImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => Example1RouteRoute,
 } as any)
 
 const UsersUserIdRoute = UsersUserIdImport.update({
@@ -123,6 +165,27 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/example1': {
+      id: '/example1'
+      path: '/example1'
+      fullPath: '/example1'
+      preLoaderRoute: typeof Example1RouteImport
+      parentRoute: typeof rootRoute
+    }
+    '/example2': {
+      id: '/example2'
+      path: '/example2'
+      fullPath: '/example2'
+      preLoaderRoute: typeof Example2RouteImport
+      parentRoute: typeof rootRoute
+    }
+    '/example3': {
+      id: '/example3'
+      path: '/example3'
+      fullPath: '/example3'
+      preLoaderRoute: typeof Example3RouteImport
       parentRoute: typeof rootRoute
     }
     '/posts': {
@@ -181,6 +244,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UsersUserIdImport
       parentRoute: typeof UsersRouteImport
     }
+    '/example1/': {
+      id: '/example1/'
+      path: '/'
+      fullPath: '/example1/'
+      preLoaderRoute: typeof Example1IndexImport
+      parentRoute: typeof Example1RouteImport
+    }
+    '/example2/': {
+      id: '/example2/'
+      path: '/'
+      fullPath: '/example2/'
+      preLoaderRoute: typeof Example2IndexImport
+      parentRoute: typeof Example2RouteImport
+    }
+    '/example3/': {
+      id: '/example3/'
+      path: '/'
+      fullPath: '/example3/'
+      preLoaderRoute: typeof Example3IndexImport
+      parentRoute: typeof Example3RouteImport
+    }
     '/posts/': {
       id: '/posts/'
       path: '/'
@@ -220,6 +304,42 @@ declare module '@tanstack/react-router' {
 }
 
 // Create and export the route tree
+
+interface Example1RouteRouteChildren {
+  Example1IndexRoute: typeof Example1IndexRoute
+}
+
+const Example1RouteRouteChildren: Example1RouteRouteChildren = {
+  Example1IndexRoute: Example1IndexRoute,
+}
+
+const Example1RouteRouteWithChildren = Example1RouteRoute._addFileChildren(
+  Example1RouteRouteChildren,
+)
+
+interface Example2RouteRouteChildren {
+  Example2IndexRoute: typeof Example2IndexRoute
+}
+
+const Example2RouteRouteChildren: Example2RouteRouteChildren = {
+  Example2IndexRoute: Example2IndexRoute,
+}
+
+const Example2RouteRouteWithChildren = Example2RouteRoute._addFileChildren(
+  Example2RouteRouteChildren,
+)
+
+interface Example3RouteRouteChildren {
+  Example3IndexRoute: typeof Example3IndexRoute
+}
+
+const Example3RouteRouteChildren: Example3RouteRouteChildren = {
+  Example3IndexRoute: Example3IndexRoute,
+}
+
+const Example3RouteRouteWithChildren = Example3RouteRoute._addFileChildren(
+  Example3RouteRouteChildren,
+)
 
 interface PostsRouteRouteChildren {
   PostsPostIdRoute: typeof PostsPostIdRoute
@@ -281,6 +401,9 @@ const PathlessLayoutRouteWithChildren = PathlessLayoutRoute._addFileChildren(
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/example1': typeof Example1RouteRouteWithChildren
+  '/example2': typeof Example2RouteRouteWithChildren
+  '/example3': typeof Example3RouteRouteWithChildren
   '/posts': typeof PostsRouteRouteWithChildren
   '/users': typeof UsersRouteRouteWithChildren
   '': typeof PathlessLayoutNestedLayoutRouteWithChildren
@@ -288,6 +411,9 @@ export interface FileRoutesByFullPath {
   '/redirect': typeof RedirectRoute
   '/posts/$postId': typeof PostsPostIdRoute
   '/users/$userId': typeof UsersUserIdRoute
+  '/example1/': typeof Example1IndexRoute
+  '/example2/': typeof Example2IndexRoute
+  '/example3/': typeof Example3IndexRoute
   '/posts/': typeof PostsIndexRoute
   '/users/': typeof UsersIndexRoute
   '/route-a': typeof PathlessLayoutNestedLayoutRouteARoute
@@ -302,6 +428,9 @@ export interface FileRoutesByTo {
   '/redirect': typeof RedirectRoute
   '/posts/$postId': typeof PostsPostIdRoute
   '/users/$userId': typeof UsersUserIdRoute
+  '/example1': typeof Example1IndexRoute
+  '/example2': typeof Example2IndexRoute
+  '/example3': typeof Example3IndexRoute
   '/posts': typeof PostsIndexRoute
   '/users': typeof UsersIndexRoute
   '/route-a': typeof PathlessLayoutNestedLayoutRouteARoute
@@ -312,6 +441,9 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/example1': typeof Example1RouteRouteWithChildren
+  '/example2': typeof Example2RouteRouteWithChildren
+  '/example3': typeof Example3RouteRouteWithChildren
   '/posts': typeof PostsRouteRouteWithChildren
   '/users': typeof UsersRouteRouteWithChildren
   '/_pathlessLayout': typeof PathlessLayoutRouteWithChildren
@@ -320,6 +452,9 @@ export interface FileRoutesById {
   '/_pathlessLayout/_nested-layout': typeof PathlessLayoutNestedLayoutRouteWithChildren
   '/posts/$postId': typeof PostsPostIdRoute
   '/users/$userId': typeof UsersUserIdRoute
+  '/example1/': typeof Example1IndexRoute
+  '/example2/': typeof Example2IndexRoute
+  '/example3/': typeof Example3IndexRoute
   '/posts/': typeof PostsIndexRoute
   '/users/': typeof UsersIndexRoute
   '/_pathlessLayout/_nested-layout/route-a': typeof PathlessLayoutNestedLayoutRouteARoute
@@ -331,6 +466,9 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/example1'
+    | '/example2'
+    | '/example3'
     | '/posts'
     | '/users'
     | ''
@@ -338,6 +476,9 @@ export interface FileRouteTypes {
     | '/redirect'
     | '/posts/$postId'
     | '/users/$userId'
+    | '/example1/'
+    | '/example2/'
+    | '/example3/'
     | '/posts/'
     | '/users/'
     | '/route-a'
@@ -351,6 +492,9 @@ export interface FileRouteTypes {
     | '/redirect'
     | '/posts/$postId'
     | '/users/$userId'
+    | '/example1'
+    | '/example2'
+    | '/example3'
     | '/posts'
     | '/users'
     | '/route-a'
@@ -359,6 +503,9 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/example1'
+    | '/example2'
+    | '/example3'
     | '/posts'
     | '/users'
     | '/_pathlessLayout'
@@ -367,6 +514,9 @@ export interface FileRouteTypes {
     | '/_pathlessLayout/_nested-layout'
     | '/posts/$postId'
     | '/users/$userId'
+    | '/example1/'
+    | '/example2/'
+    | '/example3/'
     | '/posts/'
     | '/users/'
     | '/_pathlessLayout/_nested-layout/route-a'
@@ -377,6 +527,9 @@ export interface FileRouteTypes {
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  Example1RouteRoute: typeof Example1RouteRouteWithChildren
+  Example2RouteRoute: typeof Example2RouteRouteWithChildren
+  Example3RouteRoute: typeof Example3RouteRouteWithChildren
   PostsRouteRoute: typeof PostsRouteRouteWithChildren
   UsersRouteRoute: typeof UsersRouteRouteWithChildren
   PathlessLayoutRoute: typeof PathlessLayoutRouteWithChildren
@@ -387,6 +540,9 @@ export interface RootRouteChildren {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  Example1RouteRoute: Example1RouteRouteWithChildren,
+  Example2RouteRoute: Example2RouteRouteWithChildren,
+  Example3RouteRoute: Example3RouteRouteWithChildren,
   PostsRouteRoute: PostsRouteRouteWithChildren,
   UsersRouteRoute: UsersRouteRouteWithChildren,
   PathlessLayoutRoute: PathlessLayoutRouteWithChildren,
@@ -406,6 +562,9 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/example1",
+        "/example2",
+        "/example3",
         "/posts",
         "/users",
         "/_pathlessLayout",
@@ -416,6 +575,24 @@ export const routeTree = rootRoute
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/example1": {
+      "filePath": "example1.route.tsx",
+      "children": [
+        "/example1/"
+      ]
+    },
+    "/example2": {
+      "filePath": "example2.route.tsx",
+      "children": [
+        "/example2/"
+      ]
+    },
+    "/example3": {
+      "filePath": "example3.route.tsx",
+      "children": [
+        "/example3/"
+      ]
     },
     "/posts": {
       "filePath": "posts.route.tsx",
@@ -458,6 +635,18 @@ export const routeTree = rootRoute
     "/users/$userId": {
       "filePath": "users.$userId.tsx",
       "parent": "/users"
+    },
+    "/example1/": {
+      "filePath": "example1.index.tsx",
+      "parent": "/example1"
+    },
+    "/example2/": {
+      "filePath": "example2.index.tsx",
+      "parent": "/example2"
+    },
+    "/example3/": {
+      "filePath": "example3.index.tsx",
+      "parent": "/example3"
     },
     "/posts/": {
       "filePath": "posts.index.tsx",
