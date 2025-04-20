@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Example3 } from "~/components/Example3";
+import { Example3Answer } from "~/components/Example3-Answer";
 
-export const Route = createFileRoute("/example3/")({
+export const Route = createFileRoute("/example3-answer/")({
   component: IndexComponent,
 });
 
@@ -9,7 +9,7 @@ function IndexComponent() {
   return (
     <div>
       Example Template
-      <Example3 />
+      <Example3Answer />
     </div>
   );
 }

@@ -21,41 +21,41 @@ export const usersQueryOptions = () =>
         }),
   });
 
-export const example1QueryOptions = () =>
-  queryOptions({
-    queryKey: ["example1"],
-    queryFn: () =>
-      axios
-        .get<Array<User>>(DEPLOY_URL + "/api/example1")
-        .then((r) => r.data)
-        .catch(() => {
-          throw new Error("Failed to fetch example1");
-        }),
-  });
+// export const example1QueryOptions = () =>
+//   queryOptions({
+//     queryKey: ["example1"],
+//     queryFn: () =>
+//       axios
+//         .get<Array<User>>(DEPLOY_URL + "/api/example1")
+//         .then((r) => r.data)
+//         .catch(() => {
+//           throw new Error("Failed to fetch example1");
+//         }),
+//   });
 
-export const example2QueryOptions = () =>
-  queryOptions({
-    queryKey: ["example2"],
-    queryFn: () =>
-      axios
-        .get<Array<User>>(DEPLOY_URL + "/api/example2")
-        .then((r) => r.data)
-        .catch(() => {
-          throw new Error("Failed to fetch example2");
-        }),
-  });
+// export const example2QueryOptions = () =>
+//   queryOptions({
+//     queryKey: ["example2"],
+//     queryFn: () =>
+//       axios
+//         .get<Array<User>>(DEPLOY_URL + "/api/example2")
+//         .then((r) => r.data)
+//         .catch(() => {
+//           throw new Error("Failed to fetch example2");
+//         }),
+//   });
 
-export const example3QueryOptions = () =>
-  queryOptions({
-    queryKey: ["example3"],
-    queryFn: () =>
-      axios
-        .get<Array<User>>(DEPLOY_URL + "/api/example3")
-        .then((r) => r.data)
-        .catch(() => {
-          throw new Error("Failed to fetch example3");
-        }),
-  });
+// export const example3QueryOptions = () =>
+//   queryOptions({
+//     queryKey: ["example3"],
+//     queryFn: () =>
+//       axios
+//         .get<Array<User>>(DEPLOY_URL + "/api/example3")
+//         .then((r) => r.data)
+//         .catch(() => {
+//           throw new Error("Failed to fetch example3");
+//         }),
+//   });
 
 export const userQueryOptions = (id: string) =>
   queryOptions({

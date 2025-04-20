@@ -81,7 +81,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <div className="p-2 flex gap-2 text-lg">
+        <div className="p-2 flex text-lg gap-2 justify-between">
           <Link
             to="/"
             activeProps={{
@@ -90,7 +90,61 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             activeOptions={{ exact: true }}
           >
             Home
-          </Link>{" "}
+          </Link>
+          <Link
+            to="/example1"
+            activeProps={{
+              className: "font-bold",
+            }}
+            activeOptions={{ exact: true }}
+          >
+            Example 1
+          </Link>
+          <Link
+            to="/example1-answer1"
+            activeProps={{
+              className: "font-bold",
+            }}
+            activeOptions={{ exact: true }}
+          >
+            Example 1 Answer2
+          </Link>
+          <Link
+            to="/example1-answer2"
+            activeProps={{
+              className: "font-bold",
+            }}
+            activeOptions={{ exact: true }}
+          >
+            Example 1 Answer 2
+          </Link>
+          <Link
+            to="/example2"
+            activeProps={{
+              className: "font-bold",
+            }}
+            activeOptions={{ exact: true }}
+          >
+            Example 2
+          </Link>
+          <Link
+            to="/example3"
+            activeProps={{
+              className: "font-bold",
+            }}
+            activeOptions={{ exact: true }}
+          >
+            Example 3
+          </Link>
+          <Link
+            to="/example3-answer"
+            activeProps={{
+              className: "font-bold",
+            }}
+            activeOptions={{ exact: true }}
+          >
+            Example 3 Answer
+          </Link>
           {/* <Link
             to="/posts"
             activeProps={{

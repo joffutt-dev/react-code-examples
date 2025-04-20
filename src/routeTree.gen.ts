@@ -12,17 +12,17 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as RedirectImport } from './routes/redirect'
+import { Route as Example1Answer2Import } from './routes/example1-answer2'
+import { Route as Example1Answer1Import } from './routes/example1-answer1'
 import { Route as DeferredImport } from './routes/deferred'
 import { Route as PathlessLayoutImport } from './routes/_pathlessLayout'
 import { Route as UsersRouteImport } from './routes/users.route'
 import { Route as PostsRouteImport } from './routes/posts.route'
-import { Route as Example3RouteImport } from './routes/example3.route'
-import { Route as Example2RouteImport } from './routes/example2.route'
-import { Route as Example1RouteImport } from './routes/example1.route'
 import { Route as IndexImport } from './routes/index'
 import { Route as UsersIndexImport } from './routes/users.index'
 import { Route as PostsIndexImport } from './routes/posts.index'
 import { Route as Example3IndexImport } from './routes/example3.index'
+import { Route as Example3AnswerIndexImport } from './routes/example3-answer.index'
 import { Route as Example2IndexImport } from './routes/example2.index'
 import { Route as Example1IndexImport } from './routes/example1.index'
 import { Route as UsersUserIdImport } from './routes/users.$userId'
@@ -37,6 +37,18 @@ import { Route as PathlessLayoutNestedLayoutRouteAImport } from './routes/_pathl
 const RedirectRoute = RedirectImport.update({
   id: '/redirect',
   path: '/redirect',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const Example1Answer2Route = Example1Answer2Import.update({
+  id: '/example1-answer2',
+  path: '/example1-answer2',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const Example1Answer1Route = Example1Answer1Import.update({
+  id: '/example1-answer1',
+  path: '/example1-answer1',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -63,24 +75,6 @@ const PostsRouteRoute = PostsRouteImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const Example3RouteRoute = Example3RouteImport.update({
-  id: '/example3',
-  path: '/example3',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const Example2RouteRoute = Example2RouteImport.update({
-  id: '/example2',
-  path: '/example2',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const Example1RouteRoute = Example1RouteImport.update({
-  id: '/example1',
-  path: '/example1',
-  getParentRoute: () => rootRoute,
-} as any)
-
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
@@ -100,21 +94,27 @@ const PostsIndexRoute = PostsIndexImport.update({
 } as any)
 
 const Example3IndexRoute = Example3IndexImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => Example3RouteRoute,
+  id: '/example3/',
+  path: '/example3/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const Example3AnswerIndexRoute = Example3AnswerIndexImport.update({
+  id: '/example3-answer/',
+  path: '/example3-answer/',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const Example2IndexRoute = Example2IndexImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => Example2RouteRoute,
+  id: '/example2/',
+  path: '/example2/',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const Example1IndexRoute = Example1IndexImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => Example1RouteRoute,
+  id: '/example1/',
+  path: '/example1/',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const UsersUserIdRoute = UsersUserIdImport.update({
@@ -167,27 +167,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/example1': {
-      id: '/example1'
-      path: '/example1'
-      fullPath: '/example1'
-      preLoaderRoute: typeof Example1RouteImport
-      parentRoute: typeof rootRoute
-    }
-    '/example2': {
-      id: '/example2'
-      path: '/example2'
-      fullPath: '/example2'
-      preLoaderRoute: typeof Example2RouteImport
-      parentRoute: typeof rootRoute
-    }
-    '/example3': {
-      id: '/example3'
-      path: '/example3'
-      fullPath: '/example3'
-      preLoaderRoute: typeof Example3RouteImport
-      parentRoute: typeof rootRoute
-    }
     '/posts': {
       id: '/posts'
       path: '/posts'
@@ -214,6 +193,20 @@ declare module '@tanstack/react-router' {
       path: '/deferred'
       fullPath: '/deferred'
       preLoaderRoute: typeof DeferredImport
+      parentRoute: typeof rootRoute
+    }
+    '/example1-answer1': {
+      id: '/example1-answer1'
+      path: '/example1-answer1'
+      fullPath: '/example1-answer1'
+      preLoaderRoute: typeof Example1Answer1Import
+      parentRoute: typeof rootRoute
+    }
+    '/example1-answer2': {
+      id: '/example1-answer2'
+      path: '/example1-answer2'
+      fullPath: '/example1-answer2'
+      preLoaderRoute: typeof Example1Answer2Import
       parentRoute: typeof rootRoute
     }
     '/redirect': {
@@ -246,24 +239,31 @@ declare module '@tanstack/react-router' {
     }
     '/example1/': {
       id: '/example1/'
-      path: '/'
-      fullPath: '/example1/'
+      path: '/example1'
+      fullPath: '/example1'
       preLoaderRoute: typeof Example1IndexImport
-      parentRoute: typeof Example1RouteImport
+      parentRoute: typeof rootRoute
     }
     '/example2/': {
       id: '/example2/'
-      path: '/'
-      fullPath: '/example2/'
+      path: '/example2'
+      fullPath: '/example2'
       preLoaderRoute: typeof Example2IndexImport
-      parentRoute: typeof Example2RouteImport
+      parentRoute: typeof rootRoute
+    }
+    '/example3-answer/': {
+      id: '/example3-answer/'
+      path: '/example3-answer'
+      fullPath: '/example3-answer'
+      preLoaderRoute: typeof Example3AnswerIndexImport
+      parentRoute: typeof rootRoute
     }
     '/example3/': {
       id: '/example3/'
-      path: '/'
-      fullPath: '/example3/'
+      path: '/example3'
+      fullPath: '/example3'
       preLoaderRoute: typeof Example3IndexImport
-      parentRoute: typeof Example3RouteImport
+      parentRoute: typeof rootRoute
     }
     '/posts/': {
       id: '/posts/'
@@ -304,42 +304,6 @@ declare module '@tanstack/react-router' {
 }
 
 // Create and export the route tree
-
-interface Example1RouteRouteChildren {
-  Example1IndexRoute: typeof Example1IndexRoute
-}
-
-const Example1RouteRouteChildren: Example1RouteRouteChildren = {
-  Example1IndexRoute: Example1IndexRoute,
-}
-
-const Example1RouteRouteWithChildren = Example1RouteRoute._addFileChildren(
-  Example1RouteRouteChildren,
-)
-
-interface Example2RouteRouteChildren {
-  Example2IndexRoute: typeof Example2IndexRoute
-}
-
-const Example2RouteRouteChildren: Example2RouteRouteChildren = {
-  Example2IndexRoute: Example2IndexRoute,
-}
-
-const Example2RouteRouteWithChildren = Example2RouteRoute._addFileChildren(
-  Example2RouteRouteChildren,
-)
-
-interface Example3RouteRouteChildren {
-  Example3IndexRoute: typeof Example3IndexRoute
-}
-
-const Example3RouteRouteChildren: Example3RouteRouteChildren = {
-  Example3IndexRoute: Example3IndexRoute,
-}
-
-const Example3RouteRouteWithChildren = Example3RouteRoute._addFileChildren(
-  Example3RouteRouteChildren,
-)
 
 interface PostsRouteRouteChildren {
   PostsPostIdRoute: typeof PostsPostIdRoute
@@ -401,19 +365,19 @@ const PathlessLayoutRouteWithChildren = PathlessLayoutRoute._addFileChildren(
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/example1': typeof Example1RouteRouteWithChildren
-  '/example2': typeof Example2RouteRouteWithChildren
-  '/example3': typeof Example3RouteRouteWithChildren
   '/posts': typeof PostsRouteRouteWithChildren
   '/users': typeof UsersRouteRouteWithChildren
   '': typeof PathlessLayoutNestedLayoutRouteWithChildren
   '/deferred': typeof DeferredRoute
+  '/example1-answer1': typeof Example1Answer1Route
+  '/example1-answer2': typeof Example1Answer2Route
   '/redirect': typeof RedirectRoute
   '/posts/$postId': typeof PostsPostIdRoute
   '/users/$userId': typeof UsersUserIdRoute
-  '/example1/': typeof Example1IndexRoute
-  '/example2/': typeof Example2IndexRoute
-  '/example3/': typeof Example3IndexRoute
+  '/example1': typeof Example1IndexRoute
+  '/example2': typeof Example2IndexRoute
+  '/example3-answer': typeof Example3AnswerIndexRoute
+  '/example3': typeof Example3IndexRoute
   '/posts/': typeof PostsIndexRoute
   '/users/': typeof UsersIndexRoute
   '/route-a': typeof PathlessLayoutNestedLayoutRouteARoute
@@ -425,11 +389,14 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '': typeof PathlessLayoutNestedLayoutRouteWithChildren
   '/deferred': typeof DeferredRoute
+  '/example1-answer1': typeof Example1Answer1Route
+  '/example1-answer2': typeof Example1Answer2Route
   '/redirect': typeof RedirectRoute
   '/posts/$postId': typeof PostsPostIdRoute
   '/users/$userId': typeof UsersUserIdRoute
   '/example1': typeof Example1IndexRoute
   '/example2': typeof Example2IndexRoute
+  '/example3-answer': typeof Example3AnswerIndexRoute
   '/example3': typeof Example3IndexRoute
   '/posts': typeof PostsIndexRoute
   '/users': typeof UsersIndexRoute
@@ -441,19 +408,19 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/example1': typeof Example1RouteRouteWithChildren
-  '/example2': typeof Example2RouteRouteWithChildren
-  '/example3': typeof Example3RouteRouteWithChildren
   '/posts': typeof PostsRouteRouteWithChildren
   '/users': typeof UsersRouteRouteWithChildren
   '/_pathlessLayout': typeof PathlessLayoutRouteWithChildren
   '/deferred': typeof DeferredRoute
+  '/example1-answer1': typeof Example1Answer1Route
+  '/example1-answer2': typeof Example1Answer2Route
   '/redirect': typeof RedirectRoute
   '/_pathlessLayout/_nested-layout': typeof PathlessLayoutNestedLayoutRouteWithChildren
   '/posts/$postId': typeof PostsPostIdRoute
   '/users/$userId': typeof UsersUserIdRoute
   '/example1/': typeof Example1IndexRoute
   '/example2/': typeof Example2IndexRoute
+  '/example3-answer/': typeof Example3AnswerIndexRoute
   '/example3/': typeof Example3IndexRoute
   '/posts/': typeof PostsIndexRoute
   '/users/': typeof UsersIndexRoute
@@ -466,19 +433,19 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/example1'
-    | '/example2'
-    | '/example3'
     | '/posts'
     | '/users'
     | ''
     | '/deferred'
+    | '/example1-answer1'
+    | '/example1-answer2'
     | '/redirect'
     | '/posts/$postId'
     | '/users/$userId'
-    | '/example1/'
-    | '/example2/'
-    | '/example3/'
+    | '/example1'
+    | '/example2'
+    | '/example3-answer'
+    | '/example3'
     | '/posts/'
     | '/users/'
     | '/route-a'
@@ -489,11 +456,14 @@ export interface FileRouteTypes {
     | '/'
     | ''
     | '/deferred'
+    | '/example1-answer1'
+    | '/example1-answer2'
     | '/redirect'
     | '/posts/$postId'
     | '/users/$userId'
     | '/example1'
     | '/example2'
+    | '/example3-answer'
     | '/example3'
     | '/posts'
     | '/users'
@@ -503,19 +473,19 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/example1'
-    | '/example2'
-    | '/example3'
     | '/posts'
     | '/users'
     | '/_pathlessLayout'
     | '/deferred'
+    | '/example1-answer1'
+    | '/example1-answer2'
     | '/redirect'
     | '/_pathlessLayout/_nested-layout'
     | '/posts/$postId'
     | '/users/$userId'
     | '/example1/'
     | '/example2/'
+    | '/example3-answer/'
     | '/example3/'
     | '/posts/'
     | '/users/'
@@ -527,27 +497,33 @@ export interface FileRouteTypes {
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  Example1RouteRoute: typeof Example1RouteRouteWithChildren
-  Example2RouteRoute: typeof Example2RouteRouteWithChildren
-  Example3RouteRoute: typeof Example3RouteRouteWithChildren
   PostsRouteRoute: typeof PostsRouteRouteWithChildren
   UsersRouteRoute: typeof UsersRouteRouteWithChildren
   PathlessLayoutRoute: typeof PathlessLayoutRouteWithChildren
   DeferredRoute: typeof DeferredRoute
+  Example1Answer1Route: typeof Example1Answer1Route
+  Example1Answer2Route: typeof Example1Answer2Route
   RedirectRoute: typeof RedirectRoute
+  Example1IndexRoute: typeof Example1IndexRoute
+  Example2IndexRoute: typeof Example2IndexRoute
+  Example3AnswerIndexRoute: typeof Example3AnswerIndexRoute
+  Example3IndexRoute: typeof Example3IndexRoute
   PostsPostIdDeepRoute: typeof PostsPostIdDeepRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  Example1RouteRoute: Example1RouteRouteWithChildren,
-  Example2RouteRoute: Example2RouteRouteWithChildren,
-  Example3RouteRoute: Example3RouteRouteWithChildren,
   PostsRouteRoute: PostsRouteRouteWithChildren,
   UsersRouteRoute: UsersRouteRouteWithChildren,
   PathlessLayoutRoute: PathlessLayoutRouteWithChildren,
   DeferredRoute: DeferredRoute,
+  Example1Answer1Route: Example1Answer1Route,
+  Example1Answer2Route: Example1Answer2Route,
   RedirectRoute: RedirectRoute,
+  Example1IndexRoute: Example1IndexRoute,
+  Example2IndexRoute: Example2IndexRoute,
+  Example3AnswerIndexRoute: Example3AnswerIndexRoute,
+  Example3IndexRoute: Example3IndexRoute,
   PostsPostIdDeepRoute: PostsPostIdDeepRoute,
 }
 
@@ -562,37 +538,22 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/example1",
-        "/example2",
-        "/example3",
         "/posts",
         "/users",
         "/_pathlessLayout",
         "/deferred",
+        "/example1-answer1",
+        "/example1-answer2",
         "/redirect",
+        "/example1/",
+        "/example2/",
+        "/example3-answer/",
+        "/example3/",
         "/posts_/$postId/deep"
       ]
     },
     "/": {
       "filePath": "index.tsx"
-    },
-    "/example1": {
-      "filePath": "example1.route.tsx",
-      "children": [
-        "/example1/"
-      ]
-    },
-    "/example2": {
-      "filePath": "example2.route.tsx",
-      "children": [
-        "/example2/"
-      ]
-    },
-    "/example3": {
-      "filePath": "example3.route.tsx",
-      "children": [
-        "/example3/"
-      ]
     },
     "/posts": {
       "filePath": "posts.route.tsx",
@@ -617,6 +578,12 @@ export const routeTree = rootRoute
     "/deferred": {
       "filePath": "deferred.tsx"
     },
+    "/example1-answer1": {
+      "filePath": "example1-answer1.tsx"
+    },
+    "/example1-answer2": {
+      "filePath": "example1-answer2.tsx"
+    },
     "/redirect": {
       "filePath": "redirect.tsx"
     },
@@ -637,16 +604,16 @@ export const routeTree = rootRoute
       "parent": "/users"
     },
     "/example1/": {
-      "filePath": "example1.index.tsx",
-      "parent": "/example1"
+      "filePath": "example1.index.tsx"
     },
     "/example2/": {
-      "filePath": "example2.index.tsx",
-      "parent": "/example2"
+      "filePath": "example2.index.tsx"
+    },
+    "/example3-answer/": {
+      "filePath": "example3-answer.index.tsx"
     },
     "/example3/": {
-      "filePath": "example3.index.tsx",
-      "parent": "/example3"
+      "filePath": "example3.index.tsx"
     },
     "/posts/": {
       "filePath": "posts.index.tsx",
